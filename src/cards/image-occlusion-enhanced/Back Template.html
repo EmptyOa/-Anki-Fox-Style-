@@ -28,39 +28,39 @@
 
 <script>
     // MAKE MASK INITIALLY INVISIBLE
-    const ioOverlay = document.getElementById("io-overlay");
-    ioOverlay.style.visibility = "hidden";
+    const ioOverlay = document.getElementById('io-overlay');
+    ioOverlay.style.visibility = 'hidden';
 
     // TOGGLE ANSWER MASK ON CLICKING THE IMAGE
     function toggle() {
-        if (ioOverlay.style.visibility === "hidden") {
-            ioOverlay.style.visibility = "visible";
+        if (ioOverlay.style.visibility === 'hidden') {
+            ioOverlay.style.visibility = 'visible';
         } else {
-            ioOverlay.style.visibility = "hidden";
+            ioOverlay.style.visibility = 'hidden';
         }
     }
 
     // MANUALLY REMOVING EMPTY WIDGETS
-    const remarks = document.getElementById("remarks");
+    const remarks = document.getElementById('remarks');
 
-    if ("{{Remarks}}".length === 0) {
-        remarks.style.display = "none";
+    if ('{{Remarks}}'.length === 0) {
+        remarks.style.display = 'none';
     }
 
-    const sources = document.getElementById("sources");
+    const sources = document.getElementById('sources');
 
-    if ("{{Remarks}}".length === 0) {
-        sources.style.display = "none";
+    if ('{{Remarks}}'.length === 0) {
+        sources.style.display = 'none';
     }
 
     // GENERAL WIDGET MANAGEMENT
 
-    let widgets = document.getElementById("main").children
+    let widgets = document.getElementById('main').children;
 
     for (let i = 0; i < widgets.length; i++) {
         if (!widgets[i].innerHTML) {
             // CLEARS ALL EMPTY WIDGETS
-            widgets[i].style.display = "none";
+            widgets[i].style.display = 'none';
         } else {
             // KEEPS THE MARGIN UP
             let getMargin = () => {
@@ -78,11 +78,20 @@
                         return navigator.userAgent.match(/Opera Mini/i);
                     },
                     Windows: function () {
-                        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                        return (
+                            navigator.userAgent.match(/IEMobile/i) ||
+                            navigator.userAgent.match(/WPDesktop/i)
+                        );
                     },
                     any: function () {
-                        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-                    }
+                        return (
+                            isMobile.Android() ||
+                            isMobile.BlackBerry() ||
+                            isMobile.iOS() ||
+                            isMobile.Opera() ||
+                            isMobile.Windows()
+                        );
+                    },
                 };
 
                 let verticalBound = 10;
@@ -92,15 +101,17 @@
                 }
 
                 return [verticalBound, window.innerWidth * 0.05];
-            }
+            };
 
             let bounds = getMargin();
             widgets[i].style.margin = `${bounds[0]}px ${bounds[1]}px ${bounds[0]}px ${bounds[1]}px`;
 
-            window.addEventListener("resize", () => {
+            window.addEventListener('resize', () => {
                 let bounds = getMargin();
-                widgets[i].style.margin = `${bounds[0]}px ${bounds[1]}px ${bounds[0]}px ${bounds[1]}px`;
-            })
+                widgets[
+                    i
+                ].style.margin = `${bounds[0]}px ${bounds[1]}px ${bounds[0]}px ${bounds[1]}px`;
+            });
         }
     }
 </script>

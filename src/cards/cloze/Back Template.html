@@ -1,16 +1,20 @@
 <div id="main">
-    <div class="default-a">{{Front}}</div>
-    <div class="default-b">{{Back}}</div>
+    <div class="default-a">
+        <p>{{Front}}</p>
+    </div>
+    <div class="default-b">
+        <p>{{Back}}</p>
+    </div>
 </div>
 
 <script>
     // GENERAL WIDGET MANAGEMENT
-    let widgets = document.getElementById("main").children
+    let widgets = document.getElementById('main').children;
 
     for (let i = 0; i < widgets.length; i++) {
         if (!widgets[i].innerHTML) {
             // CLEARS ALL EMPTY WIDGETS
-            widgets[i].style.display = "none";
+            widgets[i].style.display = 'none';
         } else {
             // KEEPS THE MARGIN UP
             let getMargin = () => {
@@ -28,11 +32,20 @@
                         return navigator.userAgent.match(/Opera Mini/i);
                     },
                     Windows: function () {
-                        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                        return (
+                            navigator.userAgent.match(/IEMobile/i) ||
+                            navigator.userAgent.match(/WPDesktop/i)
+                        );
                     },
                     any: function () {
-                        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-                    }
+                        return (
+                            isMobile.Android() ||
+                            isMobile.BlackBerry() ||
+                            isMobile.iOS() ||
+                            isMobile.Opera() ||
+                            isMobile.Windows()
+                        );
+                    },
                 };
 
                 let verticalBound = 10;
@@ -42,15 +55,17 @@
                 }
 
                 return [verticalBound, window.innerWidth * 0.05];
-            }
+            };
 
             let bounds = getMargin();
             widgets[i].style.margin = `${bounds[0]}px ${bounds[1]}px ${bounds[0]}px ${bounds[1]}px`;
 
-            window.addEventListener("resize", () => {
+            window.addEventListener('resize', () => {
                 let bounds = getMargin();
-                widgets[i].style.margin = `${bounds[0]}px ${bounds[1]}px ${bounds[0]}px ${bounds[1]}px`;
-            })
+                widgets[
+                    i
+                ].style.margin = `${bounds[0]}px ${bounds[1]}px ${bounds[0]}px ${bounds[1]}px`;
+            });
         }
     }
 </script>

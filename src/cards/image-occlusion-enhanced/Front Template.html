@@ -9,26 +9,26 @@
 
 <script>
     // PREVENT ORIGINAL IMAGE FROM LOADING BEFORE MASK
-    const ioOverlay = document.getElementById("io-overlay");
+    const ioOverlay = document.getElementById('io-overlay');
 
     const loaded = () => {
-        const ioOriginal = document.getElementById("io-original");
-        ioOriginal.style.visibility = "visible";
-    }
+        const ioOriginal = document.getElementById('io-original');
+        ioOriginal.style.visibility = 'visible';
+    };
 
     if (ioOverlay === null || ioOverlay.complete) {
         loaded();
     } else {
-        ioOverlay.addEventListener("load", loaded);
+        ioOverlay.addEventListener('load', loaded);
     }
 
     // GENERAL WIDGET MANAGEMENT
-    let widgets = document.getElementById("main").children
+    let widgets = document.getElementById('main').children;
 
     for (let i = 0; i < widgets.length; i++) {
         if (!widgets[i].innerHTML) {
             // CLEARS ALL EMPTY WIDGETS
-            widgets[i].style.display = "none";
+            widgets[i].style.display = 'none';
         } else {
             // KEEPS THE MARGIN UP
             let getMargin = () => {
@@ -46,11 +46,20 @@
                         return navigator.userAgent.match(/Opera Mini/i);
                     },
                     Windows: function () {
-                        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                        return (
+                            navigator.userAgent.match(/IEMobile/i) ||
+                            navigator.userAgent.match(/WPDesktop/i)
+                        );
                     },
                     any: function () {
-                        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-                    }
+                        return (
+                            isMobile.Android() ||
+                            isMobile.BlackBerry() ||
+                            isMobile.iOS() ||
+                            isMobile.Opera() ||
+                            isMobile.Windows()
+                        );
+                    },
                 };
 
                 let verticalBound = 10;
@@ -60,15 +69,17 @@
                 }
 
                 return [verticalBound, window.innerWidth * 0.05];
-            }
+            };
 
             let bounds = getMargin();
             widgets[i].style.margin = `${bounds[0]}px ${bounds[1]}px ${bounds[0]}px ${bounds[1]}px`;
 
-            window.addEventListener("resize", () => {
+            window.addEventListener('resize', () => {
                 let bounds = getMargin();
-                widgets[i].style.margin = `${bounds[0]}px ${bounds[1]}px ${bounds[0]}px ${bounds[1]}px`;
-            })
+                widgets[
+                    i
+                ].style.margin = `${bounds[0]}px ${bounds[1]}px ${bounds[0]}px ${bounds[1]}px`;
+            });
         }
     }
 </script>
