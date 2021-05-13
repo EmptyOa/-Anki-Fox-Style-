@@ -1,0 +1,55 @@
+<div id="main">
+    <div class="default-a">{{Front}}</div>
+</div>
+
+<script>
+    // GENERAL WIDGET MANAGEMENT
+    let widgets = document.getElementById("main").children
+
+    for (let i = 0; i < widgets.length; i++) {
+        if (!widgets[i].innerHTML) {
+            // CLEARS ALL EMPTY WIDGETS
+            widgets[i].style.display = "none";
+        } else {
+            // KEEPS THE MARGIN UP
+            let getMargin = () => {
+                let isMobile = {
+                    Android: function () {
+                        return navigator.userAgent.match(/Android/i);
+                    },
+                    BlackBerry: function () {
+                        return navigator.userAgent.match(/BlackBerry/i);
+                    },
+                    iOS: function () {
+                        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                    },
+                    Opera: function () {
+                        return navigator.userAgent.match(/Opera Mini/i);
+                    },
+                    Windows: function () {
+                        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                    },
+                    any: function () {
+                        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                    }
+                };
+
+                let verticalBound = 10;
+
+                if (isMobile.any()) {
+                    verticalBound = 20;
+                }
+
+                return [verticalBound, window.innerWidth * 0.05];
+            }
+
+            let bounds = getMargin();
+            widgets[i].style.margin = `${bounds[0]}px ${bounds[1]}px ${bounds[0]}px ${bounds[1]}px`;
+
+            window.addEventListener("resize", () => {
+                let bounds = getMargin();
+                widgets[i].style.margin = `${bounds[0]}px ${bounds[1]}px ${bounds[0]}px ${bounds[1]}px`;
+            })
+        }
+    }
+</script>

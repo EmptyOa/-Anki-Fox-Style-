@@ -1,0 +1,190 @@
+/* ROOT STYLE */
+:root {
+    /* SELECTION PREVENTION */
+    user-select: none;
+
+    /* MARGINS */
+    --widget-standard-margin: 20px;
+
+    /* COLORS */
+    --primary-color: #df2935;
+    --secondary-color: #86ba90;
+    --tertiary-color: #f5f3bb;
+}
+
+#main {
+    width: 1000px;
+    margin: auto;
+}
+
+/* HEADER WIDGET */
+.header {
+    display: flex;
+
+    margin: var(--widget-standard-margin);
+    padding: 17px;
+    border-radius: 4px;
+
+    font-family: Source Han Serif;
+    font-weight: 600;
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+    text-decoration: underline;
+
+    background-color: var(--primary-color);
+}
+
+/* FOOTER WIDGET */
+.footer {
+    margin: var(--widget-standard-margin);
+    padding: 11px;
+    border-radius: 4px;
+
+    font-family: Source Han Serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 15px;
+    text-align: center;
+
+    background-color: var(--secondary-color);
+    color: black;
+}
+
+/* WIDGET OVERLAYER INTERFACE */
+.widget-overlayer {
+    margin: var(--widget-standard-margin);
+    display: grid;
+    grid-template-columns: [column0] 100% [column1];
+    grid-template-rows: [row0] 100% [row1];
+
+    padding: 20px;
+    border-radius: 4px;
+
+    background-color: var(--tertiary-color);
+}
+
+.widget-overlayer-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: row0 / column0 / row1 / column1;
+
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* BUTTON WIDGET */
+.button {
+    margin: var(--widget-standard-margin);
+    padding: 11px;
+    border-radius: 4px;
+
+    font-family: Source Han Serif;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+
+    background-color: var(--primary-color);
+    border: var(--tertiary-color) solid 4px;
+    color: black;
+
+    transition: all 200ms ease;
+}
+
+.button:hover {
+    background-color: var(--tertiary-color);
+    border: var(--primary-color) solid 4px;
+}
+
+.button:active {
+    background-color: var(--primary-color);
+}
+
+/* QUOTE WIDGET */
+.quote {
+    margin: var(--widget-standard-margin);
+    padding: 11px;
+    border-radius: 4px;
+
+    font-family: Source Han Serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 20px;
+    text-align: center;
+
+    background-color: red;
+    color: black;
+}
+
+.quote::before {
+    content: '" ';
+}
+
+.quote::after {
+    content: '" ';
+}
+
+/* DEFAULT-A WIDGET */
+.default-a {
+    display: flex;
+
+    padding: 10px;
+    border-radius: 4px;
+
+    font-family: Source Han Serif;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+
+    color: black;
+    background-color: var(--primary-color);
+}
+
+/* DEFAULT-B WIDGET */
+.default-b {
+    display: flex;
+
+    padding: 10px;
+    border-radius: 4px;
+
+    font-family: Source Han Serif;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+
+    background-color: var(--secondary-color);
+    color: black;
+}
+
+/* ENTRY WIDGET */
+.entry {
+    margin: var(--widget-standard-margin);
+    display: grid;
+    grid-template-columns: [column0] 29% [column1] 2% [column2] 69% [column3];
+    grid-template-rows: [row0] 100% [row1];
+
+    padding: 20px;
+    border-radius: 4px;
+
+    background-color: var(--tertiary-color);
+}
+
+.entry-index {
+    grid-area: row0 / column0 / row1 / column1;
+
+    margin: 0px;
+}
+
+.entry-content {
+    grid-area: row0 / column2 / row1 / column3;
+
+    margin: 0px;
+}
+
+/* OCCLUSION CSS */
+.io-original {
+    visibility: hidden;
+}
