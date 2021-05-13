@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This is a code base for a consistent `Anki Card Style`. It makes your anki cards look better and cleaner.
+This is a codebase for a consistent `Anki Card Style`. It makes your anki cards look better and cleaner.
 
 ## How to use it?
 
